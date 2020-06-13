@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="CylinderMesh" id=1]
+
+[node name="VehicleWheel" type="VehicleWheel"]
+transform = Transform( 0.0971153, 0, 0, 0, 0.219005, 0, 0, 0, 0.219005, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( -1.62921e-07, -0.1, 0, 0.470669, -7.66817e-09, 0, 0, 0, 0.470669, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
