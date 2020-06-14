@@ -1,46 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Scenes/Vehicle/low poly car.gltf" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Vehicle/Glass.material" type="Material" id=2]
-[ext_resource path="res://Scenes/Vehicle/Tire.material" type="Material" id=3]
-[ext_resource path="res://Scenes/Vehicle/Rim.material" type="Material" id=4]
-[ext_resource path="res://Scenes/Vehicle/BackLights.material" type="Material" id=5]
-[ext_resource path="res://Scenes/Vehicle/HeadlightFrames.material" type="Material" id=6]
-[ext_resource path="res://Scenes/Vehicle/FrontLights.material" type="Material" id=7]
-[ext_resource path="res://Scenes/Vehicle/Grills.material" type="Material" id=8]
-[ext_resource path="res://Scenes/Vehicle/Body.material" type="Material" id=9]
 
 [node name="LowPolyCar" instance=ExtResource( 1 )]
-
-[node name="Car" parent="." index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.710818, 0.159152 )
-material/0 = ExtResource( 9 )
-material/1 = ExtResource( 2 )
-material/2 = ExtResource( 6 )
-material/3 = ExtResource( 5 )
-material/4 = ExtResource( 8 )
-material/5 = ExtResource( 7 )
-
-[node name="F_R_Tire" parent="." index="1"]
-transform = Transform( 0, 1.06119, 0, -1.06119, 0, 0, 0, 0, 1.06119, 1.10928, 0.288455, -1.3842 )
-material/0 = ExtResource( 3 )
-material/1 = ExtResource( 4 )
-
-[node name="B_R_Tire" parent="." index="2"]
-transform = Transform( 0, 1.06119, 0, -1.06119, 0, 0, 0, 0, 1.06119, 1.10928, 0.273282, 1.2389 )
-material/0 = ExtResource( 4 )
-material/1 = ExtResource( 3 )
-
-[node name="B_L_Tire" parent="." index="3"]
-transform = Transform( 6.32517e-08, -1.06119, -1.72889e-07, -1.06119, -1.26503e-07, -1.72889e-07, 1.72889e-07, 1.72889e-07, -1.06119, -1.10204, 0.288455, 1.2389 )
-material/0 = ExtResource( 4 )
-material/1 = ExtResource( 3 )
-
-[node name="F_L_Tire" parent="." index="4"]
-transform = Transform( 6.32517e-08, -1.06119, -1.72889e-07, -1.06119, -1.26503e-07, -1.72889e-07, 1.72889e-07, 1.72889e-07, -1.06119, -1.10204, 0.273282, -1.3842 )
-material/0 = ExtResource( 4 )
-material/1 = ExtResource( 3 )
-
-[node name="Sun" parent="." index="5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0207502, 4.26246, -1.3662 )
-visible = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24452, 0 )

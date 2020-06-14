@@ -32,7 +32,7 @@
         },
         {
             "mesh" : 1,
-            "name" : "F_R_Tire",
+            "name" : "Right_Front_Wheel",
             "rotation" : [
                 0,
                 0,
@@ -52,7 +52,7 @@
         },
         {
             "mesh" : 2,
-            "name" : "B_R_Tire",
+            "name" : "Right_Back_Wheel",
             "rotation" : [
                 0,
                 0,
@@ -72,7 +72,7 @@
         },
         {
             "mesh" : 3,
-            "name" : "B_L_Tire",
+            "name" : "Left_Back_Wheel",
             "rotation" : [
                 -0.7071068286895752,
                 0.7071067690849304,
@@ -92,7 +92,7 @@
         },
         {
             "mesh" : 4,
-            "name" : "F_L_Tire",
+            "name" : "Left_Front_Wheel",
             "rotation" : [
                 -0.7071068286895752,
                 0.7071067690849304,
