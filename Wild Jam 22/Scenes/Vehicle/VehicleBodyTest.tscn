@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.225499, 0.0793165, 0.625677 )
+
+[sub_resource type="CylinderMesh" id=4]
+
+[node name="VehicleBody" type="VehicleBody"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.215, 0, 0, 0, 0.542, 0, 0, 0.105 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="SoftBody" type="SoftBody" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.215, 0, 0, 0, 0.542, 0, 0, 0.104757 )
+visible = false
+mesh = SubResource( 2 )
+material/0 = null
+linear_stiffness = 1.0
+areaAngular_stiffness = 1.0
+volume_stiffness = 1.0
+damping_coefficient = 1.0
+ray_pickable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0544668, 0.0965042 )
+shape = SubResource( 3 )
+
+[node name="Vehicle" type="Spatial" parent="."]
+
+[node name="VehicleWheel" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.309427, 0, 0, 0, 0.309427, -0.322827, -0.205105, 0.487937 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="VehicleWheel"]
+transform = Transform( -5.80097e-09, -0.00755969, 0, 0.465774, -1.61113e-08, 0, 0, 0, 0.465774, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="VehicleWheel2" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.309427, 0, 0, 0, 0.309427, -0.322827, -0.205105, -0.277265 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="VehicleWheel2"]
+transform = Transform( -5.80097e-09, -0.00755969, 0, 0.465774, -1.61113e-08, 0, 0, 0, 0.465774, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="VehicleWheel4" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.309427, 0, 0, 0, 0.309427, 0.32648, -0.205105, 0.485241 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="VehicleWheel4"]
+transform = Transform( -5.80097e-09, -0.00755969, 0, 0.465774, -1.61113e-08, 0, 0, 0, 0.465774, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="VehicleWheel3" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.309427, 0, 0, 0, 0.309427, 0.32648, -0.205105, -0.279961 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="VehicleWheel3"]
+transform = Transform( -5.80097e-09, -0.00755969, 0, 0.465774, -1.61113e-08, 0, 0, 0, 0.465774, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = null
