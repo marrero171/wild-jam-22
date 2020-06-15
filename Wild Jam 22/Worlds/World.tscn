@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scenes/Vehicle/LowPolyCar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Vehicle/LeCar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://kiara_5_noon.jpg" type="Texture" id=2]
 
 [sub_resource type="BoxShape" id=1]
@@ -16,12 +16,8 @@ background_sky = SubResource( 3 )
 
 [node name="World" type="Spatial"]
 
-[node name="LowPolyCar" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.02009, 0 )
-color = Color( 0.054902, 0, 1, 1 )
-
-[node name="Camera" type="Camera" parent="LowPolyCar"]
-transform = Transform( 1, 0, 0, 0, 0.929963, 0.367654, 0, -0.367654, 0.929963, 0, 3.91571, 10.1644 )
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.929963, 0.367654, 0, -0.367654, 0.929963, 0, 7.9358, 10.1644 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( 42.4248, 0, 0, 0, 1, 0, 0, 0, 47.6671, 0, -1.37943, 0 )
@@ -39,3 +35,6 @@ light_energy = 0.31
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
+
+[node name="VehicleBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62795, 3.82082, 0 )
