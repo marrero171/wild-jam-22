@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Roads/Road.material" type="Material" id=1]
+[ext_resource path="res://Roads/RoadLine.material" type="Material" id=2]
+[ext_resource path="res://Roads/Pavement.material" type="Material" id=3]
+[ext_resource path="res://Roads/test_road.gltf" type="PackedScene" id=4]
+
+[node name="test_road" instance=ExtResource( 4 )]
+
+[node name="Road" parent="." index="2"]
+material/0 = ExtResource( 1 )
+material/1 = ExtResource( 2 )
+material/2 = ExtResource( 3 )
