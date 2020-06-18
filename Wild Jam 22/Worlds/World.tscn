@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/Vehicle/LeCar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Skyboxes/kiara_5_noon.jpg" type="Texture" id=2]
-[ext_resource path="res://Roads/test_road.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Roads/GridMap/Roads.meshlib" type="MeshLibrary" id=3]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -24,6 +24,7 @@ transform = Transform( 42.4248, 0, 0, 0, 1, 0, 0, 0, 47.6671, 0, -1.37943, 0 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00369162, -0.0357819, 0.00159211 )
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -35,15 +36,25 @@ light_energy = 0.31
 environment = SubResource( 4 )
 
 [node name="VehicleBody" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.492, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7071, 2.60172, 14.1999 )
 color = Color( 0, 0.27451, 1, 1 )
 Player = true
 
 [node name="FirstPerson" type="Camera" parent="VehicleBody"]
 transform = Transform( 1, 0, 0, 0, 0.98183, -0.189764, 0, 0.189764, 0.98183, 0, 0.578423, -0.210042 )
-current = true
 
 [node name="ThirdPerson" type="Camera" parent="VehicleBody"]
 transform = Transform( 1, 0, 0, 0, 0.929963, 0.367654, 0, -0.367654, 0.929963, 0, 2.444, 6.9626 )
+current = true
 
-[node name="test_road" parent="." instance=ExtResource( 3 )]
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00107193, -0.15588, -0.0386581 )
+mesh_library = ExtResource( 3 )
+cell_size = Vector3( 8, 1, 9.13 )
+cell_center_y = false
+data = {
+"cells": PoolIntArray( 65534, 0, 0, 65534, 1, 0, 65534, 2, -1610612736, 65534, 3, 0, 65534, 4, 0, 65534, 5, 0, 65534, 6, 0, 65534, 65529, 0, 65534, 65530, 0, 65534, 65531, 0, 65534, 65532, 0, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
