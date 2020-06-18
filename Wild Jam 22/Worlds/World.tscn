@@ -37,7 +37,7 @@ environment = SubResource( 4 )
 
 [node name="VehicleBody" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7071, 2.60172, 14.1999 )
-color = Color( 0, 0.27451, 1, 1 )
+color = Color( 0, 0.345098, 1, 1 )
 Player = true
 
 [node name="FirstPerson" type="Camera" parent="VehicleBody"]
