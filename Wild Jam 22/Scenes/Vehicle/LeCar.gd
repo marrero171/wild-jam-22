@@ -5,8 +5,8 @@ export var color = Color(0,0,0)
 export var Player = false
 
 func _ready():
-	$StaticBody/Body/Body.mesh.get("surface_1/material").set("albedo_color", color)
-	$StaticBody/HeadlightFrames/HeadlightFrames.mesh.get("surface_1/material").set("albedo_color", color)
+	$Parts/Body/Body.mesh.get("surface_1/material").set("albedo_color", color)
+	$Parts/HeadlightFrames/HeadlightFrames.mesh.get("surface_1/material").set("albedo_color", color)
 	
 func _physics_process(_delta):
 	
@@ -18,3 +18,7 @@ func _physics_process(_delta):
 			$FirstPerson.current = false
 		else:
 			$FirstPerson.current = true
+		
+		if Input.is_action_pressed("ui_up"):
+			set_engine_force(5000.0)
+		print(engine_force)

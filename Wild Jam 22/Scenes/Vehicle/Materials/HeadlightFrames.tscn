@@ -2,8 +2,4 @@
 
 [ext_resource path="res://Scenes/Vehicle/Materials/Assets/HeadlightFrames.glb" type="PackedScene" id=1]
 
-
-
-
-
 [node name="HeadlightFrames" instance=ExtResource( 1 )]
