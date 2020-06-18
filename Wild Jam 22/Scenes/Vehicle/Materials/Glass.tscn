@@ -1,5 +1,9 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://VehiclematerialParts/Glass.glb" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Vehicle/Materials/Assets/Glass.glb" type="PackedScene" id=1]
+
+
+
+
 
 [node name="Glass" instance=ExtResource( 1 )]

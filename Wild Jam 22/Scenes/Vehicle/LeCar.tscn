@@ -7,8 +7,8 @@
 [ext_resource path="res://Scenes/Vehicle/Materials/Glass.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Vehicle/Materials/Grills.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Vehicle/LeCar.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/Vehicle/LowPolyCar GLTF/Tire.material" type="Material" id=8]
-[ext_resource path="res://Scenes/Vehicle/LowPolyCar GLTF/Rim.material" type="Material" id=9]
+[ext_resource path="res://Scenes/Vehicle/Materials/Assets/Tire.material" type="Material" id=8]
+[ext_resource path="res://Scenes/Vehicle/Materials/Assets/Rim.material" type="Material" id=9]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 0.587056, 2.03 )
