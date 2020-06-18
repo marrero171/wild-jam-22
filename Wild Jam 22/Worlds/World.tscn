@@ -47,7 +47,7 @@ transform = Transform( 1, 0, 0, 0, 0.98183, -0.189764, 0, 0.189764, 0.98183, 0, 
 transform = Transform( 1, 0, 0, 0, 0.929963, 0.367654, 0, -0.367654, 0.929963, 0, 2.444, 6.9626 )
 current = true
 
-[node name="GridMap" type="GridMap" parent="."]
+[node name="Road" type="GridMap" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00107193, -0.15588, -0.0386581 )
 mesh_library = ExtResource( 3 )
 cell_size = Vector3( 8, 1, 9.13 )
