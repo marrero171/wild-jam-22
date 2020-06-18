@@ -38,6 +38,7 @@ light_energy = 0.31
 environment = SubResource( 4 )
 
 [node name="VehicleBody" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62795, 3.82082, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62795, 5.49193, 0 )
+color = Color( 0, 0.27451, 1, 1 )
 
 [node name="test_road" parent="." instance=ExtResource( 3 )]
