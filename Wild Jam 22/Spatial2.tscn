@@ -1,17 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scenes/Vehicle/Materials/Body.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Vehicle/Materials/Frontlights.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Vehicle/Materials/Backlights.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Vehicle/Materials/HeadlightFrames.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Vehicle/Materials/Glass.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Vehicle/Materials/Grills.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Vehicle/LeCar.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/Vehicle/LowPolyCar GLTF/Tire.material" type="Material" id=8]
-[ext_resource path="res://Scenes/Vehicle/LowPolyCar GLTF/Rim.material" type="Material" id=9]
-
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 1, 0.587056, 2.03 )
+[ext_resource path="res://Scenes/Vehicle/LowPolyCar GLTF/Tire.material" type="Material" id=1]
+[ext_resource path="res://Scenes/Vehicle/LowPolyCar GLTF/Rim.material" type="Material" id=2]
 
 [sub_resource type="ArrayMesh" id=2]
 resource_name = "Right_Front_Wheel"
@@ -22,7 +12,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97303,
 "index_count": 0,
-"material": ExtResource( 8 ),
+"material": ExtResource( 1 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 783
@@ -34,7 +24,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 97303,
 "index_count": 0,
-"material": ExtResource( 9 ),
+"material": ExtResource( 2 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 1176
@@ -49,7 +39,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97303,
 "index_count": 0,
-"material": ExtResource( 9 ),
+"material": ExtResource( 2 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 1419
@@ -61,7 +51,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 97303,
 "index_count": 0,
-"material": ExtResource( 8 ),
+"material": ExtResource( 1 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 540
@@ -76,7 +66,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97303,
 "index_count": 0,
-"material": ExtResource( 9 ),
+"material": ExtResource( 2 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 1419
@@ -88,7 +78,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 97303,
 "index_count": 0,
-"material": ExtResource( 8 ),
+"material": ExtResource( 1 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 540
@@ -103,7 +93,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97303,
 "index_count": 0,
-"material": ExtResource( 9 ),
+"material": ExtResource( 2 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 1419
@@ -115,41 +105,16 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 97303,
 "index_count": 0,
-"material": ExtResource( 8 ),
+"material": ExtResource( 1 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 540
 }
 
-[node name="VehicleBody" type="VehicleBody"]
-script = ExtResource( 7 )
-
-[node name="StaticBody" type="StaticBody" parent="."]
-
-[node name="Frontlights" parent="StaticBody" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.465, -0.163 )
-
-[node name="Backlights" parent="StaticBody" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.465, -0.163 )
-
-[node name="Grills" parent="StaticBody" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.465, -0.163 )
-
-[node name="HeadlightFrames" parent="StaticBody" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.465, -0.163 )
-
-[node name="Glass" parent="StaticBody" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.465, -0.163 )
-
-[node name="Body" parent="StaticBody" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.465, -0.163 )
-
-[node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 1 )
+[node name="Spatial2" type="Spatial"]
 
 [node name="Right_Front" type="VehicleWheel" parent="."]
-transform = Transform( 0, 1.06119, 0, -1.06119, 0, 0, 0, 0, 1.06119, 1.109, -0.422, -1.547 )
-engine_force = 0.492404
+transform = Transform( 0, 1.06119, 0, -1.06119, 0, 0, 0, 0, 1.06119, 1.10928, -0.886876, -1.3842 )
 
 [node name="Right_Front" type="MeshInstance" parent="Right_Front"]
 mesh = SubResource( 2 )
@@ -157,7 +122,7 @@ material/0 = null
 material/1 = null
 
 [node name="Right_Back" type="VehicleWheel" parent="."]
-transform = Transform( 0, 1.06119, 0, -1.06119, 0, 0, 0, 0, 1.06119, 1.109, -0.437, 1.076 )
+transform = Transform( 0, 1.06119, 0, -1.06119, 0, 0, 0, 0, 1.06119, 1.10928, -0.902049, 1.2389 )
 
 [node name="Right_Back" type="MeshInstance" parent="Right_Back"]
 mesh = SubResource( 3 )
@@ -165,7 +130,7 @@ material/0 = null
 material/1 = null
 
 [node name="Left_Back" type="VehicleWheel" parent="."]
-transform = Transform( 6.32517e-08, -1.06119, -1.72889e-07, -1.06119, -1.26503e-07, -1.72889e-07, 1.72889e-07, 1.72889e-07, -1.06119, -1.102, -0.422, 1.076 )
+transform = Transform( 6.32517e-08, -1.06119, -1.72889e-07, -1.06119, -1.26503e-07, -1.72889e-07, 1.72889e-07, 1.72889e-07, -1.06119, -1.10204, -0.886876, 1.2389 )
 
 [node name="Left_Back" type="MeshInstance" parent="Left_Back"]
 mesh = SubResource( 4 )
@@ -173,7 +138,7 @@ material/0 = null
 material/1 = null
 
 [node name="Left_Front" type="VehicleWheel" parent="."]
-transform = Transform( 6.32517e-08, -1.06119, -1.72889e-07, -1.06119, -1.26503e-07, -1.72889e-07, 1.72889e-07, 1.72889e-07, -1.06119, -1.102, -0.437, -1.547 )
+transform = Transform( 6.32517e-08, -1.06119, -1.72889e-07, -1.06119, -1.26503e-07, -1.72889e-07, 1.72889e-07, 1.72889e-07, -1.06119, -1.10204, -0.902049, -1.3842 )
 
 [node name="Left_Front" type="MeshInstance" parent="Left_Front"]
 mesh = SubResource( 5 )
