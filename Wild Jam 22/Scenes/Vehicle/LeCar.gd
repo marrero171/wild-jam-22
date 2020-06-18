@@ -1,6 +1,6 @@
 extends VehicleBody
 
-
+export var color = Color(0,0,0)
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -8,8 +8,7 @@ extends VehicleBody
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	$StaticBody/Body/Body.mesh.get("surface_1/material").set("albedo_color", color)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
