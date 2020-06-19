@@ -40,7 +40,8 @@ func _physics_process(_delta):
 			brakef = 1
 		
 		Global.rpm = round(-$Left_Front.get_rpm())
-		
+		if Global.rpm == -0:
+			Global.rpm = 0
 		
 		engine_force = forcef * ENGINE_FORCE
 		brake = brakef * BRAKE_FORCE
