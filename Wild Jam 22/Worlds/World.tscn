@@ -37,18 +37,19 @@ material/0 = null
 [node name="Road" type="GridMap" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00107193, -0.15588, -0.0386581 )
 mesh_library = ExtResource( 3 )
-cell_size = Vector3( 8, 1, 9.13 )
+cell_size = Vector3( 8, 1, 27.39 )
 cell_center_y = false
+cell_scale = 3.0
 data = {
-"cells": PoolIntArray( 65534, 0, 0, 65534, 1, -1610612736, 65534, 2, 0, 65534, 3, 0, 65534, 4, 0, 65534, 5, 0, 65534, 6, 0, 65534, 65529, -1610612736, 65534, 65530, 536870912, 65534, 65531, 0, 65534, 65532, 0, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0 )
+"cells": PoolIntArray( 65534, 0, 0, 65534, 1, 0, 65534, 2, -1610612736, 65534, 3, -1610612736, 65534, 65531, 0, 65534, 65532, -1610612736, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, -1610612736 )
 }
 __meta__ = {
 "_editor_clip_": 0
 }
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 26.521, 0 )
-light_energy = 0.31
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -135.89, 230.179, 151.842 )
+light_energy = 0.55
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
@@ -60,10 +61,12 @@ Player = true
 
 [node name="FirstPerson" type="Camera" parent="VehicleBody"]
 transform = Transform( 1, 0, 0, 0, 0.98183, -0.189764, 0, 0.189764, 0.98183, 0, 0.578423, -0.210042 )
+far = 1000.0
 
 [node name="ThirdPerson" type="Camera" parent="VehicleBody"]
 transform = Transform( 1, 0, 0, 0, 0.929963, 0.367654, 0, -0.367654, 0.929963, 0, 2.444, 6.9626 )
 current = true
+far = 1000.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
