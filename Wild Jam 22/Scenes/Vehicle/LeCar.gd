@@ -47,4 +47,4 @@ func _physics_process(_delta):
 		brake = brakef * BRAKE_FORCE
 		steering = steerf * STEER_ANGLE
 		
-		print(Global.rpm)
+		#print(Global.rpm)
