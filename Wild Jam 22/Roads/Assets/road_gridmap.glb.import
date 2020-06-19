@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/road_gridmap.glb-4b231d74bfc1f893d6f4e45b381e3c32.scn"
+path="res://.import/road_gridmap.glb-e36ed5951dbc6c7ff8eb1cbb9f77bc54.scn"
 
 [deps]
 
-source_file="res://Roads/TheGltf/road_gridmap.glb"
-dest_files=[ "res://.import/road_gridmap.glb-4b231d74bfc1f893d6f4e45b381e3c32.scn" ]
+source_file="res://Roads/Assets/road_gridmap.glb"
+dest_files=[ "res://.import/road_gridmap.glb-e36ed5951dbc6c7ff8eb1cbb9f77bc54.scn" ]
 
 [params]
 

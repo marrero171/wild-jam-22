@@ -44,17 +44,10 @@ light_energy = 15.0
 spot_range = 6.9256
 spot_angle = 30.9375
 
-[node name="SpotLight3" type="SpotLight" parent="StaticBody"]
-transform = Transform( 0.296738, 0, 0, 0, 4.5643, 6.21762, 0, -0.239205, 0.175598, 0, 49.4474, 1.33388 )
-light_energy = 15.0
-spot_range = 6.9256
-spot_angle = 30.9375
-
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 6 )
 material/0 = null
 script = ExtResource( 2 )

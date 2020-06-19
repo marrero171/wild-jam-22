@@ -1,8 +1,15 @@
 extends MeshInstance
 
 
+var leftright
+
 func _ready():
-	pass
+	randomize()
+	leftright = randi()%2
+	
 
 func _physics_process(delta):
-	rotation.y += 0.01
+	if leftright == 0:
+		leftright = -1
+
+	rotation.y += leftright * 0.01
