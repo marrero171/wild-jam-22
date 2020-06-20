@@ -4,9 +4,9 @@ export var color = Color(0,0,0)
 
 export var Player = false
 
-const ENGINE_FORCE = 5000.0
+const ENGINE_FORCE = 2000.0
 const BRAKE_FORCE = 75.0
-const STEER_ANGLE = 0.5
+const STEER_ANGLE = 0.75
 
 
 

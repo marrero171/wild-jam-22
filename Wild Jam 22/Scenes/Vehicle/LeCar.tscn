@@ -121,7 +121,7 @@ surfaces/1 = {
 extents = Vector3( 1, 0.587056, 2.03 )
 
 [node name="VehicleBody" type="VehicleBody"]
-mass = 102.041
+mass = 800.0
 script = ExtResource( 7 )
 
 [node name="Parts" type="Spatial" parent="."]
@@ -148,7 +148,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.465, -0.163 )
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, -1.102, -0.437, -1.547 )
 use_as_steering = true
 wheel_radius = 0.36
-wheel_friction_slip = 4.0
+wheel_rest_length = 0.07
+suspension_travel = 0.07
+suspension_stiffness = 70.0
+suspension_max_force = 9800.0
 
 [node name="Left_Front" type="MeshInstance" parent="Left_Front"]
 transform = Transform( -1.72859e-07, 1.061, 0, -1.061, -1.72859e-07, 0, 0, 0, 1.061, 0, 0, 0 )
@@ -158,10 +161,12 @@ material/1 = null
 
 [node name="Right_Front" type="VehicleWheel" parent="."]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 1.109, -0.422, -1.547 )
-engine_force = 0.492404
 use_as_steering = true
 wheel_radius = 0.36
-wheel_friction_slip = 4.0
+wheel_rest_length = 0.07
+suspension_travel = 0.07
+suspension_stiffness = 70.0
+suspension_max_force = 9800.0
 
 [node name="Right_Front" type="MeshInstance" parent="Right_Front"]
 transform = Transform( 1.72859e-07, -1.061, 3.45718e-07, -1.061, -1.72859e-07, 0, 5.63246e-14, -3.45718e-07, -1.061, 0, 0, 0 )
@@ -173,7 +178,10 @@ material/1 = null
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, -1.102, -0.422, 1.076 )
 use_as_traction = true
 wheel_radius = 0.36
-wheel_friction_slip = 5.0
+wheel_rest_length = 0.07
+suspension_travel = 0.07
+suspension_stiffness = 70.0
+suspension_max_force = 9800.0
 
 [node name="Left_Back" type="MeshInstance" parent="Left_Back"]
 transform = Transform( -1.72859e-07, 1.061, 0, -1.061, -1.72859e-07, 0, 0, 0, 1.061, 0, 0, 0 )
@@ -185,7 +193,10 @@ material/1 = null
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 1.109, -0.437, 1.076 )
 use_as_traction = true
 wheel_radius = 0.36
-wheel_friction_slip = 5.0
+wheel_rest_length = 0.07
+suspension_travel = 0.07
+suspension_stiffness = 70.0
+suspension_max_force = 9800.0
 
 [node name="Right_Back" type="MeshInstance" parent="Right_Back"]
 transform = Transform( 1.72859e-07, -1.061, 3.45718e-07, -1.061, -1.72859e-07, 0, 5.63246e-14, -3.45718e-07, -1.061, 0, 0, 0 )
