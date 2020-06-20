@@ -43,7 +43,6 @@ environment = SubResource( 4 )
 
 [node name="VehicleBody" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 6.602, -10 )
-visible = false
 color = Color( 0, 0.345098, 1, 1 )
 Player = true
 
