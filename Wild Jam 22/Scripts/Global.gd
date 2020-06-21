@@ -2,6 +2,9 @@ extends Node
 
 var rpm = 0
 
+var RoadGrid
+var minimap
+
 var debug = true
 
 func _ready():
