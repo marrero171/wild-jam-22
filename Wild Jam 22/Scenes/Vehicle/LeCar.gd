@@ -13,6 +13,7 @@ const STEER_ANGLE = 0.75
 func _ready():
 	$Parts/Body/Body.mesh.get("surface_1/material").set("albedo_color", color)
 	$Parts/HeadlightFrames/HeadlightFrames.mesh.get("surface_1/material").set("albedo_color", color)
+	Global.playerColor = color
 	
 func _physics_process(_delta):
 	var forcef = 0

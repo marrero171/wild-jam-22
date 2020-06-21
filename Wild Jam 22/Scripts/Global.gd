@@ -2,6 +2,8 @@ extends Node
 
 var rpm = 0
 
+var playerColor = Color(0,0,0)
+
 var RoadGrid
 var minimap
 

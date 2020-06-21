@@ -3,7 +3,7 @@ extends GridMap
 onready var tilemap = get_parent().get_node("CanvasLayer/Minimap")
 onready var calculatetile = get_parent().get_node("CanvasLayer/CalculateTile")
 onready var Car = get_parent().get_node("VehicleBody")
-onready var vehiclepoint = tilemap.get_node("Sprite")
+onready var vehiclepoint = tilemap.get_node("PlayerPoint")
 
 const TWOD = {
 	"straight":Vector2(0,1),
