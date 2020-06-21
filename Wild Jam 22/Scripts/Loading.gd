@@ -2,6 +2,7 @@ extends TileMap
 
 var RoadTiles
 
+var spawnpoint = Vector2.ZERO
 
 const TWOD = {
 	"straight":Vector2(0,1),
@@ -67,10 +68,32 @@ func removeTiles(arr, tiletoremove = 1): #primarily to remove grass, for minimap
 	return arr
 	
 
+func checkPoint(arr, x, y, allowedTiles = 1):
+	var tilesdetected = 0
+	if arr[x+1][y] == -1:
+		tilesdetected += 1
+	if arr[x-1][y] == -1:
+		tilesdetected += 1
+	if arr[x][y+1] == -1:
+		tilesdetected += 1
+	if arr[x][y-1] == -1:
+		tilesdetected += 1
+	
+	if tilesdetected <= allowedTiles:
+		return true
+	else:
+		return false
+		
+func randomint(from, to):
+	randomize()
+	return randi()% (to-from+1) + from 
 
-
+func generateCourse():
+	var arr = buildInvArray()
+	
 
 func _ready():
+	
 	
 	RoadTiles = buildInvArray()
 	
@@ -78,17 +101,17 @@ func _ready():
 	
 	Global.minimap = removeTiles(RoadTiles)
 	
-	print(TWOD)
-	print(THREED)
+	#print(TWOD)
+	#print(THREED)
 	
 	Global.RoadGrid = RoadTiles
 	
-	print(TWOD)
-	print(THREED)
+	#print(TWOD)
+	#print(THREED)
 	
 	visualizeArray(Global.minimap)
 	
-	get_tree().change_scene("res://Worlds/World.tscn")
+	#get_tree().change_scene("res://Worlds/World.tscn")
 	
 	#print(get_cell_autotile_coord(0,0))
 	#print(get_cell(0,0))
