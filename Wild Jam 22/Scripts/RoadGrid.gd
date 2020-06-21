@@ -1,7 +1,9 @@
 extends GridMap
 
-onready var tilemap = get_parent().get_node("CanvasLayer/TileMap")
-onready var calculatetile = get_parent().get_node("CanvasLayer/TileMap2")
+onready var tilemap = get_parent().get_node("CanvasLayer/Minimap")
+onready var calculatetile = get_parent().get_node("CanvasLayer/CalculateTile")
+onready var Car = get_parent().get_node("VehicleBody")
+onready var vehiclepoint = tilemap.get_node("Sprite")
 
 const TWOD = {
 	"straight":Vector2(0,1),
@@ -55,6 +57,12 @@ func convertToGrid(gridarr):
 	#print(arr)
 	return gridarr
 
+func loadTile(arr = Global.RoadGrid):
+	for x in arr.size():
+		for y in arr[x].size():
+			calculatetile.set_cell(x,y,arr[x][y])
+			calculatetile.update_bitmask_region(Vector2(0,0), Vector2(arr.size(),arr[0].size()))
+
 func loadGrid(arr = Global.RoadGrid, mini = Global.minimap):
 	for x in arr.size():
 		for y in arr[x].size():
@@ -65,6 +73,7 @@ func loadGrid(arr = Global.RoadGrid, mini = Global.minimap):
 
 func _ready():
 	miniMap(Global.minimap)
+	loadTile()
 	convertToGrid(Global.RoadGrid)
 	loadGrid()
 	
@@ -74,3 +83,8 @@ func _ready():
 	#set_cell_item(0,0,1,0)
 	#set_cell_item(1,0,1,3)
 	#set_cell_item(0,0,2,6)
+
+func _physics_process(delta):
+	var coord = world_to_map(Car.translation)
+	vehiclepoint.position = tilemap.map_to_world(Vector2(coord.x, coord.z))
+	vehiclepoint.position += Vector2(15,15) #15 is half the size of the tile, to put the point in the middle of the tile
