@@ -59,16 +59,17 @@ func storeArray(arr):
 	
 	return arr
 
-func removeTiles(arr, tiletoremove = 1): #primarily to remove grass, for minimap
+func removeTiles(arr = [], tiletoremove = 1): #primarily to remove grass, for minimap
+
 	for x in arr.size():
 		for y in arr[x].size():
 			if arr[x][y] == tiletoremove:
 				print(arr[x][y])
 				arr[x][y] = -1
-				
+
 	
 	return arr
-	
+
 
 func checkPoint(arr, x, y, allowedTiles = 0):
 	var tilesdetected = 0
@@ -157,9 +158,11 @@ func _ready():
 	RoadTiles = buildInvArray()
 	
 	RoadTiles = storeArray(RoadTiles)
-	Global.RoadGrid = RoadTiles
 	
-	Global.minimap = removeTiles(RoadTiles)
+	Global.RoadGrid = RoadTiles.duplicate(true)
+	
+	#breakpoint
+	Global.minimap = removeTiles(RoadTiles.duplicate(true))
 	
 	#print(TWOD)
 	#print(THREED)
@@ -188,5 +191,3 @@ func _ready():
 	#update_bitmask_region(Vector2(3,0), Vector2(5,3))
 
 
-func _on_Button_pressed():
-	get_tree().change_scene("res://Worlds/World.tscn")

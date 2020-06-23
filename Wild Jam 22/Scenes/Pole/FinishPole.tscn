@@ -19,6 +19,7 @@ surfaces/0 = {
 }
 
 [node name="FinishPole" type="Spatial"]
+visible = false
 
 [node name="Pole" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )

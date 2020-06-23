@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Roads/Road2D_Tilemap.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Loading.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/ButtonStart.gd" type="Script" id=3]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Road"
@@ -57,6 +58,7 @@ margin_top = 560.0
 margin_right = 840.0
 margin_bottom = 592.0
 text = "START"
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

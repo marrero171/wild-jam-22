@@ -63,19 +63,26 @@ func loadTile(arr = Global.RoadGrid):
 			calculatetile.set_cell(x,y,arr[x][y])
 			calculatetile.update_bitmask_region(Vector2(0,0), Vector2(arr.size(),arr[0].size()))
 
-func loadGrid(arr = Global.RoadGrid, mini = Global.minimap):
+func loadGrid(arr = Global.RoadGrid):
 	for x in arr.size():
 		for y in arr[x].size():
 			#if arr[x][y] != -1:
 				#print("x:"+str(x)+",y:"+str(y)+",id:"+str(arr[x][y]))
 			set_cell_item(x,0,y,arr[x][y])
 	
+	
+
+	
+	return arr
 
 func _ready():
-	miniMap(Global.minimap)
 	loadTile()
+	miniMap(Global.minimap)
 	convertToGrid(Global.RoadGrid)
+	
+	
 	loadGrid()
+	
 	
 	#print(get_cell_item(0,0,0))
 	#set_cell_item(0,0,0,4)
