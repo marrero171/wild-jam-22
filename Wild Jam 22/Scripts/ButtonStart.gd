@@ -6,4 +6,4 @@ func _ready():
 	
 func _process(_delta):
 	if pressed:
-		get_tree().change_scene("res://Worlds/World.tscn")
+		get_tree().change_scene("res://Worlds/WorldScene.tscn")
