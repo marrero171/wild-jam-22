@@ -26,6 +26,7 @@ material/1 = null
 material/2 = null
 
 [node name="StaticBody" type="StaticBody" parent="Curve_TopLeft"]
+transform = Transform( 1, 0, 0, 0, 0.81, 0, 0, 0, 1, 0, 4.93961e-11, 0 )
 
 [node name="Wall1" type="CollisionShape" parent="Curve_TopLeft/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1507, -4.39489 )
@@ -46,7 +47,7 @@ material/1 = null
 material/2 = null
 
 [node name="StaticBody" type="StaticBody" parent="Curve_BottomLeft"]
-transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+transform = Transform( -1.62921e-07, 0, 1, 0, 0.81, 0, -1, 0, -1.62921e-07, 0, 4.93961e-11, 0 )
 
 [node name="Wall1" type="CollisionShape" parent="Curve_BottomLeft/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1507, -4.39489 )
@@ -68,7 +69,7 @@ material/1 = null
 material/2 = null
 
 [node name="StaticBody" type="StaticBody" parent="Curve_TopRight"]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, 0 )
+transform = Transform( -1.62921e-07, 0, -1, 0, 0.81, 0, 1, 0, -1.62921e-07, 0, 4.93961e-11, 0 )
 
 [node name="Wall1" type="CollisionShape" parent="Curve_TopRight/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1507, -4.39489 )
@@ -90,7 +91,7 @@ material/1 = null
 material/2 = null
 
 [node name="StaticBody" type="StaticBody" parent="Curve_BottomRight"]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+transform = Transform( -1, 0, -3.25841e-07, 0, 0.81, 0, 3.25841e-07, 0, -1, 0, 4.93961e-11, 0 )
 
 [node name="Wall1" type="CollisionShape" parent="Curve_BottomRight/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1507, -4.39489 )
@@ -117,7 +118,7 @@ material/1 = null
 material/2 = null
 
 [node name="StaticBody" type="StaticBody" parent="Straight"]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+transform = Transform( -1, 0, -3.25841e-07, 0, 0.81, 0, 3.25841e-07, 0, -1, 0, 4.93961e-11, 0 )
 
 [node name="Wall1" type="CollisionShape" parent="Straight/StaticBody"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 4.31771, 4.151, 0.0400011 )
@@ -139,7 +140,7 @@ material/1 = null
 material/2 = null
 
 [node name="StaticBody" type="StaticBody" parent="Straight_Left"]
-transform = Transform( -6.27064e-08, 0.000610865, -1, -0.000122173, 1, 0.000610865, 1, 0.000122173, 1.19249e-08, -9.53674e-07, 9.31323e-10, 0 )
+transform = Transform( -5.22705e-08, 0.000632502, -1, -0.000213888, 0.81, 0.000473165, 1, 7.24522e-06, -7.14208e-08, 0, 0, 0 )
 
 [node name="Wall1" type="CollisionShape" parent="Straight_Left/StaticBody"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 4.31771, 4.151, 0.0400011 )

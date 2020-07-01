@@ -2,19 +2,21 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/minimap_point.png-5a387bd02a66b2a263762483014e5fb9.stex"
+path.s3tc="res://.import/minimap_point.png-5a387bd02a66b2a263762483014e5fb9.s3tc.stex"
+path.etc2="res://.import/minimap_point.png-5a387bd02a66b2a263762483014e5fb9.etc2.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://Scenes/Vehicle/minimap_point.png"
-dest_files=[ "res://.import/minimap_point.png-5a387bd02a66b2a263762483014e5fb9.stex" ]
+dest_files=[ "res://.import/minimap_point.png-5a387bd02a66b2a263762483014e5fb9.s3tc.stex", "res://.import/minimap_point.png-5a387bd02a66b2a263762483014e5fb9.etc2.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

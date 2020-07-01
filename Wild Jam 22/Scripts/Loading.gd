@@ -35,6 +35,9 @@ func buildInvArray(x = 34, y = 20):
 		arr[i] = []
 		arr[i].resize(y)
 		
+		for z in arr[i].size():
+			arr[i][z] = INVALID_CELL
+		
 	for i in x:
 		arr[i][0] = TWOD.grass
 		arr[i][y-1] = TWOD.grass
@@ -64,7 +67,7 @@ func removeTiles(arr = [], tiletoremove = 1): #primarily to remove grass, for mi
 	for x in arr.size():
 		for y in arr[x].size():
 			if arr[x][y] == tiletoremove:
-				print(arr[x][y])
+				#print(arr[x][y])
 				arr[x][y] = -1
 
 	
@@ -107,15 +110,26 @@ func randomint(from, to):
 	randomize()
 	return randi()% (to-from+1) + from 
 
+func arrCoord(array, vec2):
+	return array[spawnpoint.x][spawnpoint.y]
+
+
 
 
 func generateCourse():
 	var arr = buildInvArray()
 
 	while spawnpoint == Vector2.ZERO:
-		spawnpoint = Vector2(randomint(0, arr.size()), randomint(0, arr[0].size()))
-		if get_cellv(spawnpoint) != -1:
-			spawnpoint = Vector2.ZERO
+		spawnpoint = Vector2(randomint(0, (arr.size()-1)), randomint(0, (arr[0].size()-1)))
+		print(arr[0][0])
+		print(spawnpoint)
+		
+
+		if arr[spawnpoint.x][spawnpoint.y] != -1:
+			#spawnpoint = Vector2.ZERO
+			pass
+		
+	
 	print(spawnpoint)
 	
 	arr[spawnpoint.x][spawnpoint.y] = 0
@@ -124,7 +138,9 @@ func generateCourse():
 	
 	var selectedPoint = spawnpoint
 	
+	
 	while not(reachedspawn):
+
 		var XorY = randomint(0,1)
 		var PosorNeg = randomint(0,1)
 		
@@ -150,7 +166,10 @@ func generateCourse():
 		if result:
 			arr[selectedPoint.x][selectedPoint.y] = 0
 			
-		visualizeArray(arr)
+	visualizeArray(arr)
+		
+		
+		
 		
 func _ready():
 	
@@ -164,6 +183,8 @@ func _ready():
 	#breakpoint
 	Global.minimap = removeTiles(RoadTiles.duplicate(true))
 	
+	
+	generateCourse()
 	#print(TWOD)
 	#print(THREED)
 	
