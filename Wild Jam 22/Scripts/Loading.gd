@@ -5,6 +5,7 @@ var RoadTiles
 var spawnpoint = Vector2.ZERO
 var reachedspawn = false
 var result
+var resetGen = false
 
 const TWOD = {
 	"straight":Vector2(0,1),
@@ -74,38 +75,48 @@ func removeTiles(arr = [], tiletoremove = 1): #primarily to remove grass, for mi
 	return arr
 
 
-func checkPoint(arr, x, y, allowedTiles = 0):
-	var tilesdetected = 0
-	
+func checkPoint(arr, x, y, tileCount, var tilesMin = 10 , allowedTiles = 1, var tilesMax = 50):
+	var tilesDetected = 0
+	var tilesReached = false
 	#if x+1 > arr.size() or y+1 > arr[0].size():
-		
+	
+	if tileCount >= tilesMin:
+		tilesReached = true
+	
 	
 	if arr[x+1][y] != -1:
-		if spawnpoint != Vector2(x+1,y):
-			tilesdetected += 1
-		else:
+		if spawnpoint == Vector2(x+1,y) and tilesReached:
 			reachedspawn = true
+		else:
+			tilesDetected += 1
 	if arr[x-1][y] != -1:
-		if spawnpoint != Vector2(x-1,y):
-			tilesdetected += 1
-		else:
+		if spawnpoint == Vector2(x-1,y) and tilesReached:
 			reachedspawn = true
+		else:
+			tilesDetected += 1
 	if arr[x][y+1] != -1:
-		if spawnpoint != Vector2(x,y+1):
-			tilesdetected += 1
-		else:
+		if spawnpoint == Vector2(x,y+1) and tilesReached:
 			reachedspawn = true
+		else:
+			tilesDetected += 1
 	if arr[x][y-1] != -1:
-		if spawnpoint != Vector2(x,y-1):
-			tilesdetected += 1
-		else:
+		if spawnpoint == Vector2(x,y-1) and tilesReached:
 			reachedspawn = true
+		else:
+			tilesDetected += 1
 	
-	if tilesdetected <= allowedTiles:
+	
+	if tileCount >= tilesMax:
+		resetGen = true
+	
+	if tilesDetected <= allowedTiles:
 		return true
 	else:
 		return false
 		
+		
+		
+
 func randomint(from, to):
 	randomize()
 	return randi()% (to-from+1) + from 
@@ -118,7 +129,9 @@ func arrCoord(array, vec2):
 
 func generateCourse():
 	var arr = buildInvArray()
-
+	var tileCount = 0
+	
+	
 	while spawnpoint == Vector2.ZERO:
 		spawnpoint = Vector2(randomint(0, (arr.size()-1)), randomint(0, (arr[0].size()-1)))
 		print(arr[0][0])
@@ -126,8 +139,7 @@ func generateCourse():
 		
 
 		if arr[spawnpoint.x][spawnpoint.y] != -1:
-			#spawnpoint = Vector2.ZERO
-			pass
+			spawnpoint = Vector2.ZERO
 		
 	
 	print(spawnpoint)
@@ -136,39 +148,54 @@ func generateCourse():
 	
 	visualizeArray(arr)
 	
+
 	var selectedPoint = spawnpoint
 	
 	
 	while not(reachedspawn):
-
+		
 		var XorY = randomint(0,1)
 		var PosorNeg = randomint(0,1)
+		var cx
+		var cy
 		
 		if PosorNeg == 0:
 			PosorNeg = -1
 		
+		
 		if XorY == 0:
-			if arr[selectedPoint.x + PosorNeg][selectedPoint.y] == -1:
-				result = checkPoint(arr, selectedPoint.x + PosorNeg, selectedPoint.y)
-				if result:
-					selectedPoint = Vector2(selectedPoint.x + PosorNeg, selectedPoint.y)
-			else:
-				result = false
-				
-		if XorY == 1:
-			if arr[selectedPoint.x][selectedPoint.y + PosorNeg] == -1:
-				result = checkPoint(arr, selectedPoint.x, selectedPoint.y + PosorNeg)
-				if result:
-					selectedPoint = Vector2(selectedPoint.x, selectedPoint.y + PosorNeg)
-			else:
-				result = false
+			cx = selectedPoint.x + PosorNeg
+			cy = selectedPoint.y	
+		elif XorY == 1:
+			cx = selectedPoint.x
+			cy = selectedPoint.y + PosorNeg
+		
+		
+		if arr[cx][cy] == -1:
+			result = checkPoint(arr, cx, cy, tileCount)
+		else:
+			result = false
+
 				
 		if result:
+			selectedPoint = Vector2(cx, cy)
 			arr[selectedPoint.x][selectedPoint.y] = 0
 			
+			tileCount += 1
+		
+		if resetGen:
+			resetGen = false
+			break
+		
 	visualizeArray(arr)
+	update_bitmask_region(Vector2(0,0), Vector2(arr.size(),arr[0].size()))
+	
 		
-		
+	Global.RoadGrid = arr.duplicate(true)
+	
+
+	Global.minimap = removeTiles(arr.duplicate(true))
+	return true
 		
 		
 func _ready():
@@ -184,7 +211,8 @@ func _ready():
 	Global.minimap = removeTiles(RoadTiles.duplicate(true))
 	
 	
-	generateCourse()
+	while not(generateCourse()):
+		pass
 	#print(TWOD)
 	#print(THREED)
 	
