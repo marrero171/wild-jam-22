@@ -78,7 +78,7 @@ func removeTiles(arr = [], tiletoremove = 1): #primarily to remove grass, for mi
 	return arr
 
 
-func checkPoint(arr, x, y, var tilesMin = 10 , allowedTiles = 1, var tilesMax = 50):
+func checkPoint(arr, x, y, var tilesMin = 10, allowedTiles = 1, var tilesMax = 100):
 	var tilesDetected = 0
 	var tilesReached = false
 	#if x+1 > arr.size() or y+1 > arr[0].size():
@@ -146,7 +146,7 @@ func generateCourse(var arr = genArr):
 			if arr[spawnpoint.x][spawnpoint.y] != -1:
 				spawnpoint = Vector2.ZERO
 			
-		
+		Global.spawnPoint = spawnpoint
 		print(spawnpoint)
 		
 		arr[spawnpoint.x][spawnpoint.y] = 0

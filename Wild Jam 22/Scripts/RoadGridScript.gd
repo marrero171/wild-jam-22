@@ -75,8 +75,14 @@ func loadGrid(arr = Global.RoadGrid):
 	
 	return arr
 
+
+func carToSpawn():
+	print(cell_size)
+	Car.translation = Vector3((Global.spawnPoint.x*cell_size.x) + cell_size.x/2, 7, (Global.spawnPoint.y*cell_size.z) + cell_size.x/2)
+
 func _ready():
 	loadTile()
+	carToSpawn()
 	miniMap(Global.minimap)
 	convertToGrid(Global.RoadGrid)
 	

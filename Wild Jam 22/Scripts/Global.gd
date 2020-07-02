@@ -6,6 +6,7 @@ var playerColor = Color(0,0,0)
 
 var RoadGrid = []
 var minimap = []
+var spawnPoint = Vector2.ZERO
 
 var debug = true
 
