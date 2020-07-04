@@ -9,6 +9,9 @@ var genPhase = 0
 var genArr = []
 var tileCount
 var selectedPoint
+var failedChecks = 0
+
+onready var spPoint = get_parent().get_node("sp")
 
 const TWOD = {
 	"straight":Vector2(0,1),
@@ -78,7 +81,7 @@ func removeTiles(arr = [], tiletoremove = 1): #primarily to remove grass, for mi
 	return arr
 
 
-func checkPoint(arr, x, y, var tilesMin = 10, allowedTiles = 1, var tilesMax = 100):
+func checkPoint(arr, x, y, var tilesMin = 35, allowedTiles = 1, var tilesMax = 1000):
 	var tilesDetected = 0
 	var tilesReached = false
 	#if x+1 > arr.size() or y+1 > arr[0].size():
@@ -130,12 +133,13 @@ func arrCoord(array, vec2):
 
 
 
-func generateCourse(var arr = genArr):
+func generateCourse(var arr = genArr, var checkRetries = 30):
 	
 	
 	if genPhase == 0:
 		arr = buildInvArray()
 		tileCount = 0
+		spawnpoint = Vector2.ZERO
 		
 		while spawnpoint == Vector2.ZERO:
 			spawnpoint = Vector2(randomint(0, (arr.size()-1)), randomint(0, (arr[0].size()-1)))
@@ -151,7 +155,7 @@ func generateCourse(var arr = genArr):
 		
 		arr[spawnpoint.x][spawnpoint.y] = 0
 		
-		visualizeArray(arr)
+		#visualizeArray(arr)
 		
 	
 		selectedPoint = spawnpoint
@@ -184,19 +188,29 @@ func generateCourse(var arr = genArr):
 
 				
 		if result:
+			failedChecks = 0
 			selectedPoint = Vector2(cx, cy)
 			arr[selectedPoint.x][selectedPoint.y] = 0
 			
 			tileCount += 1
-			
+		
+		else:
+			failedChecks += 1
+			reachedspawn = false
 		
 		if reachedspawn:
 			genPhase = 2
+			
+		if failedChecks >= checkRetries:
+			genPhase = -1
+		
+	if genPhase == 2:
+		spPoint.position = map_to_world(spawnpoint) + cell_size/2
 		
 
 
-	visualizeArray(arr)
-	update_bitmask_region(Vector2(0,0), Vector2(arr.size(),arr[0].size()))
+	#visualizeArray(arr)
+	#update_bitmask_region(Vector2(0,0), Vector2(arr.size(),arr[0].size()))
 	
 		
 	Global.RoadGrid = arr.duplicate(true)
@@ -211,7 +225,7 @@ func generateCourse(var arr = genArr):
 		
 		
 func _ready():
-	
+	Engine.iterations_per_second = 999
 	#generateCourse()
 	RoadTiles = buildInvArray()
 	
@@ -251,4 +265,13 @@ func _ready():
 	#update_bitmask_region(Vector2(3,0), Vector2(5,3))
 
 func _process(delta):
+	pass
+	#while genPhase != 2:
+		
+
+func _physics_process(delta):
 	generateCourse()
+	
+	if genPhase == 2:
+		visualizeArray(genArr)
+		update_bitmask_region(Vector2(0,0), Vector2(genArr.size(),genArr[0].size()))

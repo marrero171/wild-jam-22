@@ -1,8 +1,50 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Roads/Road2D_Tilemap.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Loading.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/ButtonStart.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/sp.png" type="Texture" id=4]
+
+[sub_resource type="Gradient" id=10]
+colors = PoolColorArray( 0.597168, 0.597168, 0.597168, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0, 0 ), 0.0, 3.87009, 0, 0, Vector2( 0.991111, 0.0363636 ), -4.27775, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
+
+[sub_resource type="Gradient" id=14]
+colors = PoolColorArray( 0.831683, 0.831683, 0.831683, 1, 0.215332, 0.215332, 0.215332, 1 )
+
+[sub_resource type="GradientTexture" id=15]
+gradient = SubResource( 14 )
+
+[sub_resource type="Curve" id=16]
+_data = [ Vector2( 0, 0.846591 ), 0.0, 0.0, 0, 0, Vector2( 0.946667, 0.246591 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=17]
+curve = SubResource( 16 )
+
+[sub_resource type="ParticlesMaterial" id=18]
+trail_divisor = 5
+trail_size_modifier = SubResource( 17 )
+trail_color_modifier = SubResource( 15 )
+emission_shape = 1
+emission_sphere_radius = 128.0
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = -10.0
+scale = 24.0
+scale_random = 1.0
+scale_curve = SubResource( 13 )
+color_ramp = SubResource( 11 )
 
 [sub_resource type="TileSet" id=1]
 0/name = "Road"
@@ -43,7 +85,97 @@
 1/shapes = [  ]
 1/z_index = 0
 
+[sub_resource type="VisualShaderNodeInput" id=2]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=3]
+function = 0
+
+[sub_resource type="VisualShaderNodeVectorOp" id=4]
+operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id=5]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=6]
+function = 1
+
+[sub_resource type="VisualShaderNodeScalarOp" id=7]
+default_input_values = [ 0, 0.0, 1, 1.5 ]
+operator = 2
+
+[sub_resource type="VisualShader" id=8]
+code = "shader_type canvas_item;
+
+
+
+void vertex() {
+// Input:2
+	vec3 n_out2p0 = vec3(VERTEX, 0.0);
+
+// Input:5
+	float n_out5p0 = TIME;
+
+// ScalarOp:7
+	float n_in7p1 = 1.50000;
+	float n_out7p0 = n_out5p0 * n_in7p1;
+
+// ScalarFunc:3
+	float n_out3p0 = sin(n_out7p0);
+
+// ScalarFunc:6
+	float n_out6p0 = cos(n_out3p0);
+
+// VectorOp:4
+	vec3 n_out4p0 = n_out2p0 * vec3(n_out6p0);
+
+// Output:0
+	VERTEX = n_out4p0.xy;
+
+}
+
+void fragment() {
+// Output:0
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+custom_defines = ""
+graph_offset = Vector2( -292.583, 51 )
+mode = 1
+flags/light_only = false
+nodes/vertex/0/position = Vector2( 660, 140 )
+nodes/vertex/2/node = SubResource( 2 )
+nodes/vertex/2/position = Vector2( -60, 0 )
+nodes/vertex/3/node = SubResource( 3 )
+nodes/vertex/3/position = Vector2( 200, 240 )
+nodes/vertex/4/node = SubResource( 4 )
+nodes/vertex/4/position = Vector2( 400, 120 )
+nodes/vertex/5/node = SubResource( 5 )
+nodes/vertex/5/position = Vector2( -100, 260 )
+nodes/vertex/6/node = SubResource( 6 )
+nodes/vertex/6/position = Vector2( 320, 300 )
+nodes/vertex/7/node = SubResource( 7 )
+nodes/vertex/7/position = Vector2( 40, 300 )
+nodes/vertex/connections = PoolIntArray( 2, 0, 4, 0, 3, 0, 6, 0, 6, 0, 4, 1, 5, 0, 7, 0, 7, 0, 3, 0, 4, 0, 0, 0 )
+nodes/fragment/0/position = Vector2( 560, 160 )
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
+
 [node name="Node2D" type="Node2D"]
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 512, 296 )
+scale = Vector2( 5.18469, 3.177 )
+amount = 50
+lifetime = 10.0
+speed_scale = 2.0
+process_material = SubResource( 18 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -62,3 +194,9 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="sp" type="Sprite" parent="."]
+material = SubResource( 9 )
+position = Vector2( -32, -32 )
+scale = Vector2( 0.08, 0.08 )
+texture = ExtResource( 4 )
