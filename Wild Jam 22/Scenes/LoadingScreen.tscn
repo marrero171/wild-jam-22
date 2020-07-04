@@ -210,8 +210,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Re-Roll" type="Button" parent="."]
+margin_left = 832.0
+margin_top = 560.0
+margin_right = 960.0
+margin_bottom = 592.0
+text = "RE-ROLL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="sp" type="Sprite" parent="."]
 material = SubResource( 9 )
 position = Vector2( -32, -32 )
 scale = Vector2( 0.08, 0.08 )
 texture = ExtResource( 4 )
+[connection signal="pressed" from="Re-Roll" to="TileMap" method="_on_ReRoll_pressed"]

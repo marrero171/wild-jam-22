@@ -14,6 +14,7 @@ var failedChecks = 0
 onready var spPoint = get_parent().get_node("sp")
 onready var loadingText = get_parent().get_node("loadingtext")
 onready var startButton = get_parent().get_node("Button")
+onready var rollButton = get_parent().get_node("Re-Roll")
 
 
 const TWOD = {
@@ -59,11 +60,17 @@ func buildInvArray(x = 34, y = 20):
 	return arr
 
 func visualizeArray(arr):
-	for x in arr.size():
-		for y in arr[x].size():
-			if arr[x][y] == null:
-				arr[x][y] = -1
-			set_cell(x,y,arr[x][y])
+	if arr == [[-1]]:
+		for x in 100:
+			for y in 100:
+				set_cell(x,y,-1)
+	
+	else:	
+		for x in arr.size():
+			for y in arr[x].size():
+				if arr[x][y] == null:
+					arr[x][y] = -1
+				set_cell(x,y,arr[x][y])
 		
 func storeArray(arr):
 	for x in arr.size():
@@ -138,15 +145,21 @@ func arrCoord(array, vec2):
 
 func generateCourse(var arr = genArr, var checkRetries = 30):
 	
-	
+	if genPhase == -1:
+		genPhase = 0
+		
 	if genPhase == 0:
 		arr = buildInvArray()
 		tileCount = 0
 		spawnpoint = Vector2.ZERO
+		failedChecks = 0
+		reachedspawn = false
 		
+		spPoint.position = Vector2(-100,-100)
 		
 		loadingText.visible = true
 		startButton.visible = false
+		rollButton.visible = false
 		
 		while spawnpoint == Vector2.ZERO:
 			spawnpoint = Vector2(randomint(0, (arr.size()-1)), randomint(0, (arr[0].size()-1)))
@@ -214,6 +227,13 @@ func generateCourse(var arr = genArr, var checkRetries = 30):
 	if genPhase == 2:
 		spPoint.position = map_to_world(spawnpoint) + cell_size/2
 		
+		visualizeArray(genArr)
+		update_bitmask_region(Vector2(0,0), Vector2(genArr.size(),genArr[0].size()))
+		loadingText.visible = false
+		startButton.visible = true
+		rollButton.visible = true
+		
+		genPhase = 3
 
 
 	#visualizeArray(arr)
@@ -278,9 +298,9 @@ func _process(delta):
 
 func _physics_process(delta):
 	generateCourse()
-	
-	if genPhase == 2:
-		visualizeArray(genArr)
-		update_bitmask_region(Vector2(0,0), Vector2(genArr.size(),genArr[0].size()))
-		loadingText.visible = false
-		startButton.visible = true
+
+
+
+func _on_ReRoll_pressed():
+	genPhase = 0
+	visualizeArray([[-1]])
