@@ -21,7 +21,15 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("Restart") and debug:
 		restart()
-
+		
+	if Input.is_action_just_pressed("escape"):
+		if get_parent().has_node("Title"):
+			get_tree().quit()
+			
+		else:
+			Engine.iterations_per_second = 60
+			get_tree().change_scene("res://Scenes/TitleScreen.tscn")
+		
 
 func restart():
 	get_tree().reload_current_scene()

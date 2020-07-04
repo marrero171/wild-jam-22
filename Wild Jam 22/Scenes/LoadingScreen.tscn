@@ -1,39 +1,40 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Roads/Road2D_Tilemap.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Loading.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/ButtonStart.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/sp.png" type="Texture" id=4]
 [ext_resource path="res://Fonts/Oswald-VariableFont_wght.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Scripts/loadingtext.gd" type="Script" id=6]
 
-[sub_resource type="Gradient" id=10]
+[sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.597168, 0.597168, 0.597168, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=11]
-gradient = SubResource( 10 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
-[sub_resource type="Curve" id=12]
+[sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 0 ), 0.0, 3.87009, 0, 0, Vector2( 0.991111, 0.0363636 ), -4.27775, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=13]
-curve = SubResource( 12 )
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
 
-[sub_resource type="Gradient" id=14]
+[sub_resource type="Gradient" id=5]
 colors = PoolColorArray( 0.831683, 0.831683, 0.831683, 1, 0.215332, 0.215332, 0.215332, 1 )
 
-[sub_resource type="GradientTexture" id=15]
-gradient = SubResource( 14 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="Curve" id=16]
+[sub_resource type="Curve" id=7]
 _data = [ Vector2( 0, 0.846591 ), 0.0, 0.0, 0, 0, Vector2( 0.946667, 0.246591 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=17]
-curve = SubResource( 16 )
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
 
-[sub_resource type="ParticlesMaterial" id=18]
+[sub_resource type="ParticlesMaterial" id=9]
 trail_divisor = 5
-trail_size_modifier = SubResource( 17 )
-trail_color_modifier = SubResource( 15 )
+trail_size_modifier = SubResource( 8 )
+trail_color_modifier = SubResource( 6 )
 emission_shape = 1
 emission_sphere_radius = 128.0
 flag_disable_z = true
@@ -44,14 +45,14 @@ orbit_velocity_random = 0.0
 radial_accel = -10.0
 scale = 24.0
 scale_random = 1.0
-scale_curve = SubResource( 13 )
-color_ramp = SubResource( 11 )
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="DynamicFont" id=10]
 size = 32
 font_data = ExtResource( 5 )
 
-[sub_resource type="TileSet" id=1]
+[sub_resource type="TileSet" id=11]
 0/name = "Road"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
@@ -90,26 +91,26 @@ font_data = ExtResource( 5 )
 1/shapes = [  ]
 1/z_index = 0
 
-[sub_resource type="VisualShaderNodeInput" id=2]
+[sub_resource type="VisualShaderNodeInput" id=12]
 input_name = "vertex"
 
-[sub_resource type="VisualShaderNodeScalarFunc" id=3]
+[sub_resource type="VisualShaderNodeScalarFunc" id=13]
 function = 0
 
-[sub_resource type="VisualShaderNodeVectorOp" id=4]
+[sub_resource type="VisualShaderNodeVectorOp" id=14]
 operator = 2
 
-[sub_resource type="VisualShaderNodeInput" id=5]
+[sub_resource type="VisualShaderNodeInput" id=15]
 input_name = "time"
 
-[sub_resource type="VisualShaderNodeScalarFunc" id=6]
+[sub_resource type="VisualShaderNodeScalarFunc" id=16]
 function = 1
 
-[sub_resource type="VisualShaderNodeScalarOp" id=7]
+[sub_resource type="VisualShaderNodeScalarOp" id=17]
 default_input_values = [ 0, 0.0, 1, 1.5 ]
 operator = 2
 
-[sub_resource type="VisualShader" id=8]
+[sub_resource type="VisualShader" id=18]
 code = "shader_type canvas_item;
 
 
@@ -154,23 +155,23 @@ graph_offset = Vector2( -292.583, 51 )
 mode = 1
 flags/light_only = false
 nodes/vertex/0/position = Vector2( 660, 140 )
-nodes/vertex/2/node = SubResource( 2 )
+nodes/vertex/2/node = SubResource( 12 )
 nodes/vertex/2/position = Vector2( -60, 0 )
-nodes/vertex/3/node = SubResource( 3 )
+nodes/vertex/3/node = SubResource( 13 )
 nodes/vertex/3/position = Vector2( 200, 240 )
-nodes/vertex/4/node = SubResource( 4 )
+nodes/vertex/4/node = SubResource( 14 )
 nodes/vertex/4/position = Vector2( 400, 120 )
-nodes/vertex/5/node = SubResource( 5 )
+nodes/vertex/5/node = SubResource( 15 )
 nodes/vertex/5/position = Vector2( -100, 260 )
-nodes/vertex/6/node = SubResource( 6 )
+nodes/vertex/6/node = SubResource( 16 )
 nodes/vertex/6/position = Vector2( 320, 300 )
-nodes/vertex/7/node = SubResource( 7 )
+nodes/vertex/7/node = SubResource( 17 )
 nodes/vertex/7/position = Vector2( 40, 300 )
 nodes/vertex/connections = PoolIntArray( 2, 0, 4, 0, 3, 0, 6, 0, 6, 0, 4, 1, 5, 0, 7, 0, 7, 0, 3, 0, 4, 0, 0, 0 )
 nodes/fragment/0/position = Vector2( 560, 160 )
 
-[sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 8 )
+[sub_resource type="ShaderMaterial" id=19]
+shader = SubResource( 18 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -180,21 +181,26 @@ scale = Vector2( 5.18469, 3.177 )
 amount = 50
 lifetime = 10.0
 speed_scale = 2.0
-process_material = SubResource( 18 )
+process_material = SubResource( 9 )
 
 [node name="loadingtext" type="Label" parent="."]
 margin_left = 456.0
 margin_top = 264.0
 margin_right = 579.0
 margin_bottom = 313.0
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 10 )
 text = "LOADING..."
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="dotTimer" type="Timer" parent="loadingtext"]
+wait_time = 0.25
+autostart = true
+
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 1 )
+tile_set = SubResource( 11 )
 cell_size = Vector2( 30, 30 )
 format = 1
 script = ExtResource( 2 )
@@ -221,8 +227,9 @@ __meta__ = {
 }
 
 [node name="sp" type="Sprite" parent="."]
-material = SubResource( 9 )
+material = SubResource( 19 )
 position = Vector2( -32, -32 )
 scale = Vector2( 0.08, 0.08 )
 texture = ExtResource( 4 )
+[connection signal="timeout" from="loadingtext/dotTimer" to="loadingtext" method="_on_dotTimer_timeout"]
 [connection signal="pressed" from="Re-Roll" to="TileMap" method="_on_ReRoll_pressed"]

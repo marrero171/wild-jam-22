@@ -155,7 +155,10 @@ func generateCourse(var arr = genArr, var checkRetries = 30):
 		failedChecks = 0
 		reachedspawn = false
 		
+		Engine.iterations_per_second = 999
+		
 		spPoint.position = Vector2(-100,-100)
+		
 		
 		loadingText.visible = true
 		startButton.visible = false
@@ -233,6 +236,8 @@ func generateCourse(var arr = genArr, var checkRetries = 30):
 		startButton.visible = true
 		rollButton.visible = true
 		
+		Engine.iterations_per_second = 60
+		
 		genPhase = 3
 
 
@@ -252,7 +257,7 @@ func generateCourse(var arr = genArr, var checkRetries = 30):
 		
 		
 func _ready():
-	Engine.iterations_per_second = 999
+	
 	#generateCourse()
 	RoadTiles = buildInvArray()
 	

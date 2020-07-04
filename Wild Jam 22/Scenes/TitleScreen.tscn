@@ -31,7 +31,7 @@ font_data = ExtResource( 3 )
 size = 64
 font_data = ExtResource( 3 )
 
-[node name="Spatial" type="Spatial"]
+[node name="Title" type="Spatial"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
