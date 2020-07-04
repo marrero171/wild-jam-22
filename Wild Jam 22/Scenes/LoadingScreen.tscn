@@ -200,9 +200,9 @@ format = 1
 script = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 240.0
+margin_left = 216.0
 margin_top = 560.0
-margin_right = 840.0
+margin_right = 808.0
 margin_bottom = 592.0
 text = "START"
 script = ExtResource( 3 )
