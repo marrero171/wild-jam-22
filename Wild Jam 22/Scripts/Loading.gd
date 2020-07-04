@@ -12,6 +12,7 @@ var selectedPoint
 var failedChecks = 0
 
 onready var spPoint = get_parent().get_node("sp")
+onready var loadingText = get_parent().get_node("loadingtext")
 
 const TWOD = {
 	"straight":Vector2(0,1),
@@ -140,6 +141,9 @@ func generateCourse(var arr = genArr, var checkRetries = 30):
 		arr = buildInvArray()
 		tileCount = 0
 		spawnpoint = Vector2.ZERO
+		
+		
+		loadingText.visible = true
 		
 		while spawnpoint == Vector2.ZERO:
 			spawnpoint = Vector2(randomint(0, (arr.size()-1)), randomint(0, (arr[0].size()-1)))
@@ -275,3 +279,4 @@ func _physics_process(delta):
 	if genPhase == 2:
 		visualizeArray(genArr)
 		update_bitmask_region(Vector2(0,0), Vector2(genArr.size(),genArr[0].size()))
+		loadingText.visible = false
